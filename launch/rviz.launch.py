@@ -57,12 +57,36 @@ def generate_launch_description():
     # Use PushRosNamespace to apply the namespace to all nodes below
     push_namespace = PushRosNamespace(namespace=namespace)
 
+    # Build the prefix with underscore.
+    # This expression will evaluate to, for example, "cohort_" if
+    # the prefix is "cohort", or to an empty string if prefix is empty.
+    prefix_ = PythonExpression(
+        ["'", prefix, "_' if '", prefix, "' else ''"]
+    )
+
+    # Build the namespace with trailing slash.
+    # This expression will evaluate to, for example, "cohort1/" if
+    # the namespace is "cohort1", or to an empty string if namespace is empty.
+    namespace_ = PythonExpression(
+        ["'", namespace, "/' if '", namespace, "' else ''"]
+    )
+
+    # Build the namespace with leading and trailing slashes.
+    # This expression will evaluate to, for example, "/cohort1/" if
+    # the namespace is "cohort1", or to an empty string if namespace is empty.
+    _namespace_ = PythonExpression(
+        ["'/", namespace, "/' if '", namespace, "' else ''"]
+    )
+
     # Perform substitutions of <NAMESPACE> and <PREFIX> in the config file
     substituted_config = ReplaceString(
         source_file=rviz_config,
         replacements={
-            '<NAMESPACE>': PythonExpression(["'/", namespace, "/' if '", namespace, "' else '/'"]),
-            '<PREFIX>': prefix
+            '<NAMESPACE>': namespace,
+            '<NAMESPACE_>': namespace_,
+            '<_NAMESPACE_>': _namespace_,
+            '<PREFIX>': prefix,
+            '<PREFIX_>': prefix_,
         }
     )
 
