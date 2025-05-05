@@ -58,7 +58,7 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: <NAMESPACE>/robot_description
+        Value: <NAMESPACE>robot_description
       Enabled: true
       Links:
         All Links Enabled: true
@@ -117,7 +117,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: ${ARCS_COHORT_PREFIX}base_link
+    Fixed Frame: <PREFIX>base_link
     Frame Rate: 30
   Name: root
   Tools:
