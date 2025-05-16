@@ -5,6 +5,7 @@
   <version>0.0.0</version>
   <description>RViz configuration and launch files for the ARCS CoHORT project.</description>
   <maintainer email="barry.ridge@csun.edu">Barry Ridge</maintainer>
+  <maintainer email="subhobrata.chakraborty@csun.edu">Subhobrata Chakraborty</maintainer>
   <license>Apache-2.0</license>
 
   <depend>rclpy</depend>
